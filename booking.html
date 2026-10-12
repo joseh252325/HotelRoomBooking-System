@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunrise Hotel - Room Booking</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Sunrise Hotel</h1>
+        <p>Online Room Booking & Billing System</p>
+    </header>
+    
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="booking.html">Book Room</a>
+    </nav>
+
+    <div class="container">
+        <h2>Room Reservation Form</h2>
+        <form id="bookingForm" action="process_booking.php" method="POST" onsubmit="return validateBooking()">
+            
+            <div class="form-group">
+                <label for="customerName">Full Name:</label>
+                <input type="text" id="customerName" name="customerName">
+                <span id="nameError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="idNumber">National ID / Passport Number:</label>
+                <input type="text" id="idNumber" name="idNumber">
+                <span id="idError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="text" id="email" name="email">
+                <span id="emailError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number (10 digits):</label>
+                <input type="tel" id="phone" name="phone">
+                <span id="phoneError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="checkinDate">Check-in Date:</label>
+                <input type="date" id="checkinDate" name="checkinDate">
+                <span id="dateError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="nights">Number of Nights (1–14):</label>
+                <input type="number" id="nights" name="nights" min="1" max="14" value="1">
+                <span id="nightsError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="roomType">Room Type:</label>
+                <select id="roomType" name="roomType">
+                    <option value="">-- Select Room Type --</option>
+                    <option value="Single">Single Room (KSh 3,500/night - Max 1 Guest)[cite: 7]</option>
+                    <option value="Double">Double Room (KSh 5,000/night - Max 2 Guests)[cite: 7]</option>
+                    <option value="Family">Family Room (KSh 7,500/night - Max 4 Guests)[cite: 7]</option>
+                </select>
+                <span id="roomError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="guests">Number of Guests:</label>
+                <input type="number" id="guests" name="guests" min="1" value="1">
+                <span id="guestError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Add-on Services:</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" id="breakfast" name="breakfast" value="yes"> Breakfast (KSh 700 / person / night)[cite: 7]</label>
+                    <label><input type="checkbox" id="transfer" name="transfer" value="yes"> Airport Transfer (KSh 2,000)[cite: 7]</label>
+                    <!-- Individualized Requirement for Digit 9 -->
+                    <label><input type="checkbox" id="lateCheckout" name="lateCheckout" value="yes"> Late Checkout (KSh 2,000)</label>
+                </div>
+            </div>
+
+            <div class="bill-summary">
+                <h3>Estimated Bill Summary</h3>
+                <p>Room Cost: <span id="displayRoomCost">KSh 0</span></p>
+                <p>Breakfast Cost: <span id="displayBreakfastCost">KSh 0</span></p>
+                <p>Transfer Cost: <span id="displayTransferCost">KSh 0</span></p>
+                <p>Late Checkout Cost: <span id="displayLateCheckoutCost">KSh 0</span></p>
+                <hr>
+                <p><strong>Total Estimated Amount: <span id="displayTotal">KSh 0</span></strong></p>
+            </div>
+            <br>
+
+            <button type="submit">Submit Booking</button>
+        </form>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
